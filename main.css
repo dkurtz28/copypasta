@@ -30,6 +30,7 @@ div.left, div.right {
 
 textarea  {
   width: 100%;
+  height: 100px;
   box-sizing: border-box;
 }
 
@@ -94,6 +95,20 @@ footer {
   display: none;
   width: 81px;
 }
+
+.btn option {
+  color: #333;
+}
+
+input.btn {
+  background: white;
+  color: #333
+}
+
+.dlContainer {
+    float: right;
+}
+
 
 /* Scroll bars for item containers */
 .connected::-webkit-scrollbar {

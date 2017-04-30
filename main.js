@@ -61,7 +61,7 @@ function createList() {
     return (e.innerText + "\n");
   }).get().join("").replace(/;/g , "\t");
 
-  // If there is nothing to copy abort 
+  // If there is nothing to copy abort
   if (res == "") return
 
   var tArea = $("#botTextarea")
@@ -135,25 +135,21 @@ $("#myFile").change(function(e) {
 });
 
 // Download as CSV or TXT  =====================================================
-$("a[download].dlcsv").click(function(e){
+$("a[download].dlFile").click(function(e) {
   createList()
   var output = $("#botTextarea").val()
+
+  // If there isnt anything to download abort
   if (output == "") {
     e.preventDefault()
     return
   }
-  var fileurl =  window.URL.createObjectURL(new Blob([output], { type: 'data:application/csv;charset=UTF-8' }));
-  $(this).attr("href", fileurl);
-});
 
-$("a[download].dltxt").click(function(){
-  createList()
-  var output = $("#botTextarea").val()
-  if (output == "") {
-    e.preventDefault()
-    return
-  }
-  var fileurl =  window.URL.createObjectURL(new Blob([output], { type: 'data:application/txt;charset=UTF-8' }));
-  $(this).attr("href", fileurl);
+  var fName = $(".dlName").val()
+  var fType = $(".dlType").val()
+  var dataType = "data:application/" + fType + ";charset=UTF-8"
 
+  var fUrl =  window.URL.createObjectURL(new Blob([output], { type: dataType }));
+  $(this).attr("download", fName + "." + fType)
+  $(this).attr("href", fUrl);
 });

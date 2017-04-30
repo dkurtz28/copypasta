@@ -49,8 +49,15 @@
       <!-- Download Buttons -->
       <div class="container bot-container">
         <button type="submit" class="btn createList">Create List</button>
-        <a class="btn dlcsv" href="" download="file.csv">Download CSV</a>
-        <a class="btn dltxt" href="" download="file.txt">Download TXT</a>
+        <span class="dlContainer">
+          <input class="btn dlName" value="filename">
+          <select class="btn dlType" name="fileType">
+            <option value="csv">CSV</option>
+            <option value="txt">TXT</option>
+            <option value="xls">XLS</option>
+          </select>
+          <a class="btn dlFile" href="" download="file.csv">Download</a>
+        </span>
         <div class="tempMessage" style="display: none;">Copied to clipboard</div>
         <textarea id="botTextarea"></textarea>
       </div>
