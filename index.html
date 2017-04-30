@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="main.css">
+
+    <title>Easy Copy Pasta</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+
+  <body>
+
+    <div class="jumbotron headBar">
+      <h1 class="container">Easy Copy Pasta</h1>
+    </div>
+
+    <div class="content">
+      <!-- Input and upload Interfaces -->
+      <div class="container top-container">
+        <label class="btn upLoad">
+          <input type="file" class="file-btn" id="myFile">Upload File</input>
+        </label>
+        <textarea id="topTextarea"></textarea>
+      </div>
+
+      <!-- Drag and drop boxes -->
+      <div class="container mid-container">
+        <div class="btn-container">
+          <button type="submit" class="btn setItems">Reset Items</button>
+          <button type="submit" class="btn collapse">Collapse</button>
+          <button type="submit" class="btn expand">Expand</button>
+        </div>
+        <div class="left">
+          <div class="clear">clear</div>
+          <ul class="source connected"></ul>
+        </div>
+        <div class="right">
+          <div class="clear">clear</div>
+          <ul class="target connected"></ul>
+        </div>
+      </div>
+
+      <!-- Download Buttons -->
+      <div class="container bot-container">
+        <button type="submit" class="btn createList">Create List</button>
+        <a class="btn dlcsv" href="" download="file.csv">Download CSV</a>
+        <a class="btn dltxt" href="" download="file.txt">Download TXT</a>
+        <div class="tempMessage" style="display: none;">Copied to clipboard</div>
+        <textarea id="botTextarea"></textarea>
+      </div>
+
+      <!-- <div class="jumbotron">
+        <div class="container">
+        </div>
+      </div> -->
+
+      <footer class="container">&copy; Donovan Kurtz April 2017</footer>
+    </div>
+
+    <!-- bind main.js -->
+    <script src="main.js"></script>
+  </body>
+
+</html>
