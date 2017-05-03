@@ -102,8 +102,11 @@ footer {
   margin-bottom: 0px;
 }
 
-.btn.expand {
+.btn.collapse {
   display: none;
+}
+
+.btn.expand {
   width: 81px;
 }
 
@@ -257,7 +260,12 @@ ul.source {
 .right .clear, .left .clear {
   text-align: right;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
+  margin-left: auto;
+  width: 40px;
 }
 
 

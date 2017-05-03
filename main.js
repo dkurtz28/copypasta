@@ -28,6 +28,7 @@ function resetItems() {
   list.detach().empty().each(function(i) {
     for (var x = 0; x < arr.length; x++) {
       if (arr[x].replace(/\s+/g, '') != "") {
+        // Manually create the list item. Add the "x" and "⇔" action buttons
         var actionBtns = '</span><span class="remove">x</span><span class="arrow">⇔</span></li>'
         $(this).append('<li class="source-item"><span class="text">' + arr[x] + actionBtns);
       }
@@ -42,14 +43,14 @@ $(".setItems").click(resetItems)
 
 //  Expand and collapse the item boxes =========================================
 $(".collapse").click(function() {
-  $(".connected").height("inherit")
+  // CSS Default 400 - 2x2 (padding) - 1x2 (border)
+  $(".connected").height("394")
   $(".collapse").hide()
   $(".expand").show()
 });
 
 $(".expand").click(function() {
-  // CSS Default 400 - 2x2 (padding) - 1x2 (border)
-  $(".connected").height("394")
+  $(".connected").height("inherit")
   $(".collapse").show()
   $(".expand").hide()
 });
@@ -79,8 +80,6 @@ function createList() {
   }
 };
 $(".createList").click(createList)
-
-
 
 // On double click of "list item" move list item over ==========================
 $(".source").on("dblclick", ".source-item", function(e) {
@@ -136,6 +135,7 @@ $("#myFile").change(function(e) {
 
 // Download as CSV or TXT  =====================================================
 $("a[download].dlFile").click(function(e) {
+
   createList()
   var output = $("#botTextarea").val()
 
@@ -152,12 +152,21 @@ $("a[download].dlFile").click(function(e) {
 
   var blob =  new Blob([output], { type: dataType });
 
+  // Figure out how to download this blob
   if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    // This path works for IE
     window.navigator.msSaveBlob(new Blob([output], { type: dataType }), fName);
     e.preventDefault()
   } else {
+    // This path works for Chrome and Firefox
     var fUrl = window.URL.createObjectURL(blob)
     $(this).attr("download", fName)
     $(this).attr("href", fUrl);
   }
+});
+
+// On page load reset the textareas (IE&FF like to be persistent)
+$(window).load(function(e) {
+  $("#botTextarea").val("")
+  $("#topTextarea").val("")
 });
