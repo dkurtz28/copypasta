@@ -145,11 +145,19 @@ $("a[download].dlFile").click(function(e) {
     return
   }
 
-  var fName = $(".dlName").val()
   var fType = $(".dlType").val()
+  var fName = $(".dlName").val() + "." + fType
+
   var dataType = "data:application/" + fType + ";charset=UTF-8"
 
-  var fUrl =  window.URL.createObjectURL(new Blob([output], { type: dataType }));
-  $(this).attr("download", fName + "." + fType)
-  $(this).attr("href", fUrl);
+  var blob =  new Blob([output], { type: dataType });
+
+  if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveBlob(new Blob([output], { type: dataType }), fName);
+    e.preventDefault()
+  } else {
+    var fUrl = window.URL.createObjectURL(blob)
+    $(this).attr("download", fName)
+    $(this).attr("href", fUrl);
+  }
 });
