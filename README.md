@@ -23,4 +23,4 @@
 
 edit
 
-edit 2 3 4
+edit 2 3 4 5
