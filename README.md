@@ -25,4 +25,4 @@ edit
 
 edit 2 3 4 5
 
-test change 1 2
+test change 1 2 3
